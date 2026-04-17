@@ -38,6 +38,14 @@ function BlockQuote(el)
         box_type = "exambox"
       elseif strong_content:match("^Programmer:?$") then
         box_type = "programmerbox"
+      elseif strong_content:match("^Definition:?$") then
+        box_type = "definitionbox"
+      elseif strong_content:match("^Theorem:?$") then
+        box_type = "theorembox"
+      elseif strong_content:match("^Example:?$") then
+        box_type = "examplebox"
+      elseif strong_content:match("^Exercises:?$") then
+        box_type = "exercisesbox"
       end
 
       if box_type then
@@ -69,6 +77,31 @@ function BlockQuote(el)
           pandoc.RawBlock("latex", latex_end)
         }
       end
+    end
+  end
+  return el
+end
+
+-- Handle ::: fenced div callouts (e.g. ::: definition ... :::)
+function Div(el)
+  local class_map = {
+    definition = "definitionbox",
+    theorem = "theorembox",
+    example = "examplebox",
+    exercises = "exercisesbox",
+    programmer = "programmerbox",
+    tip = "tipbox",
+    warning = "warningbox",
+    note = "notebox",
+    info = "infobox",
+  }
+  for cls, box in pairs(class_map) do
+    if el.classes:includes(cls) then
+      return {
+        pandoc.RawBlock("latex", "\\begin{" .. box .. "}\n\\sloppy\n"),
+        pandoc.Div(el.content),
+        pandoc.RawBlock("latex", "\n\\end{" .. box .. "}")
+      }
     end
   end
   return el

@@ -114,6 +114,37 @@
   fonttitle=\bfseries, title={Programmer's Perspective}, before upper=\raggedright
 }
 
+% ── Academic callout boxes ──
+\definecolor{defblue}{RGB}{25, 84, 123}
+\definecolor{defbg}{RGB}{232, 243, 255}
+\definecolor{thmindigo}{RGB}{63, 81, 181}
+\definecolor{thmbg}{RGB}{232, 234, 246}
+\definecolor{exgreen}{RGB}{46, 125, 50}
+\definecolor{exbg}{RGB}{232, 245, 233}
+\definecolor{exercisebrown}{RGB}{121, 85, 72}
+\definecolor{exercisebg}{RGB}{239, 235, 233}
+
+\newtcolorbox{definitionbox}{
+  colback=defbg, colframe=defblue, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Definition}, before upper=\raggedright
+}
+\newtcolorbox{theorembox}{
+  colback=thmbg, colframe=thmindigo, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Theorem}, before upper=\raggedright
+}
+\newtcolorbox{examplebox}{
+  colback=exbg, colframe=exgreen, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Example}, before upper=\raggedright
+}
+\newtcolorbox{exercisesbox}{
+  colback=exercisebg, colframe=exercisebrown, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Exercises}, before upper=\raggedright
+}
+
 % ── Blockquote styling ──
 \AtBeginEnvironment{quote}{
   \itshape
