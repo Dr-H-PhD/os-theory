@@ -1,0 +1,32 @@
+---
+title: "Operating Systems Theory"
+subtitle: "Processes, Memory, Concurrency, and the Abstractions That Run the World"
+author: "Achraf SOLTANI"
+date: "2026"
+rights: "© 2026 Achraf SOLTANI. All rights reserved."
+lang: en
+documentclass: book
+classoption:
+  - oneside
+  - 11pt
+geometry:
+  - margin=1in
+fontsize: 11pt
+linestretch: 1.2
+mainfont: "DejaVu Serif"
+monofont: "DejaVu Sans Mono"
+toc: true
+toc-depth: 3
+numbersections: false
+colorlinks: true
+linkcolor: blue
+urlcolor: blue
+toccolor: black
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhead[L]{\leftmark}
+  - \fancyhead[R]{Achraf SOLTANI}
+  - \fancyfoot[C]{\thepage}
+  - \fancyfoot[R]{www.achrafsoltani.com}
+---

@@ -1,0 +1,156 @@
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{mdframed}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{cancel}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+
+% ── Table styling ──
+\definecolor{tableheadbg}{RGB}{41, 128, 185}
+\definecolor{tableheadfg}{RGB}{255, 255, 255}
+\definecolor{tablerowalt}{RGB}{241, 245, 249}
+\definecolor{tablerule}{RGB}{41, 128, 185}
+
+% Thicker, coloured booktabs rules
+\setlength{\heavyrulewidth}{1.2pt}
+\setlength{\lightrulewidth}{0.5pt}
+\setlength{\aboverulesep}{0.6ex}
+\setlength{\belowrulesep}{0.6ex}
+\arrayrulecolor{tablerule}
+
+% Alternating row colours
+\AtBeginEnvironment{longtable}{%
+  \rowcolors{2}{tablerowalt}{white}%
+}
+
+% Extra cell padding
+\renewcommand{\arraystretch}{1.4}
+
+
+% ── Standard callout colours ──
+\definecolor{tipgreen}{RGB}{40, 167, 69}
+\definecolor{tipbg}{RGB}{232, 245, 233}
+\definecolor{warnred}{RGB}{220, 53, 69}
+\definecolor{warnbg}{RGB}{255, 235, 238}
+\definecolor{infoblue}{RGB}{23, 162, 184}
+\definecolor{infobg}{RGB}{225, 245, 254}
+\definecolor{noteyellow}{RGB}{255, 193, 7}
+\definecolor{notebg}{RGB}{255, 249, 231}
+
+% ── New callout colours (four-act structure) ──
+\definecolor{historysepia}{RGB}{139, 90, 43}
+\definecolor{historybg}{RGB}{253, 245, 230}
+\definecolor{puzzlepurple}{RGB}{106, 27, 154}
+\definecolor{puzzlebg}{RGB}{243, 229, 245}
+\definecolor{realworldteal}{RGB}{0, 121, 107}
+\definecolor{realworldbg}{RGB}{224, 242, 241}
+\definecolor{examorange}{RGB}{230, 81, 0}
+\definecolor{exambg}{RGB}{255, 243, 224}
+\definecolor{programmerslate}{RGB}{55, 71, 79}
+\definecolor{programmerbg}{RGB}{236, 239, 241}
+
+% ── Theme colours ──
+\definecolor{codebg}{RGB}{248, 249, 250}
+\definecolor{quotegray}{RGB}{108, 117, 125}
+\definecolor{chapterblue}{RGB}{41, 128, 185}
+
+% ── Standard callout boxes ──
+\newtcolorbox{tipbox}{
+  colback=tipbg, colframe=tipgreen, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Tip}, before upper=\raggedright
+}
+\newtcolorbox{warningbox}{
+  colback=warnbg, colframe=warnred, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Warning}, before upper=\raggedright
+}
+\newtcolorbox{notebox}{
+  colback=notebg, colframe=noteyellow, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Note}, before upper=\raggedright
+}
+\newtcolorbox{infobox}{
+  colback=infobg, colframe=infoblue, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Info}, before upper=\raggedright
+}
+
+% ── Four-act callout boxes ──
+\newtcolorbox{historybox}{
+  colback=historybg, colframe=historysepia, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={The Story}, before upper=\raggedright
+}
+\newtcolorbox{puzzlebox}{
+  colback=puzzlebg, colframe=puzzlepurple, boxrule=1.5pt, arc=5pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Puzzle}, before upper=\raggedright
+}
+\newtcolorbox{realworldbox}{
+  colback=realworldbg, colframe=realworldteal, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Real World}, before upper=\raggedright
+}
+\newtcolorbox{exambox}{
+  colback=exambg, colframe=examorange, boxrule=1.5pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Exam Focus}, before upper=\raggedright
+}
+\newtcolorbox{programmerbox}{
+  colback=programmerbg, colframe=programmerslate, boxrule=1pt, arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, title={Programmer's Perspective}, before upper=\raggedright
+}
+
+% ── Blockquote styling ──
+\AtBeginEnvironment{quote}{
+  \itshape
+  \color{quotegray}
+}
+
+% ── Chapter styling ──
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{chapterblue}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% ── Section styling ──
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{chapterblue}}
+  {\thesection}{1em}{}
+
+% ── Subsection styling ──
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% ── Page header/footer ──
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[R]{\small\textit{Achraf SOLTANI}}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\small www.achrafsoltani.com}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhead{}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{\small www.achrafsoltani.com}
+}
+
+% Prevent justified text gaps in lists with long inline code
+\AtBeginEnvironment{itemize}{\raggedright}
+\AtBeginEnvironment{enumerate}{\raggedright}
+
